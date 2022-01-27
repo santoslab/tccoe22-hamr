@@ -19,7 +19,7 @@ public
 			fa: port fp.fanAck -> tcp.fanAck;
 			sp: port setPoint -> tcp.setPoint;
 		properties
-			Actual_Processor_Binding => (reference (t_processor)) applies to tsp, tcp, fp;
+			Actual_Processor_Binding => (reference (t_processor)) applies to tsp, tcp;
 		annex resolute {**
 			check HAMR_Guidelines
 		**};
@@ -38,10 +38,10 @@ public
 
 	------------------------------------------------------------------------------
 	process TempSensorProcess
-	features
+		features
 
-		currentTemp: out event data port Temperature.i;
-end TempSensorProcess;
+			currentTemp: out event data port Temperature.i;
+	end TempSensorProcess;
 
 	process implementation TempSensorProcess.i
 		subcomponents
@@ -51,15 +51,15 @@ end TempSensorProcess;
 	end TempSensorProcess.i;
 
 	thread TempSensor
-	features
-		currentTemp: out event data port Temperature.i;
-	properties
-		Dispatch_Protocol => Periodic;
-		Period => 1000ms;
-		CASE_Scheduling::Domain => 2;
-		Compute_Execution_Time => 10ms .. 10ms;
-		Stack_Size => TemperatureControl_Properties::StackSize;
-end TempSensor;
+		features
+			currentTemp: out event data port Temperature.i;
+		properties
+			Dispatch_Protocol => Hybrid;
+			Period => 1000ms;
+			CASE_Scheduling::Domain => 2;
+			Compute_Execution_Time => 10ms .. 10ms;
+			Stack_Size => TemperatureControl_Properties::StackSize;
+	end TempSensor;
 
 	thread implementation TempSensor.i
 	end TempSensor.i;
@@ -94,12 +94,12 @@ end TempSensor;
 
 	------------------------------------------------------------------------------
 	process TempControlProcess
-	features
-		fanAck: in event data port FanAck;
-		setPoint: in event data port SetPoint.i;
-		fanCmd: out event data port FanCmd;
-		currentTemp: in event data port Temperature.i;
-end TempControlProcess;
+		features
+			fanAck: in event data port FanAck;
+			setPoint: in event data port SetPoint.i;
+			fanCmd: out event data port FanCmd;
+			currentTemp: in event data port Temperature.i;
+	end TempControlProcess;
 
 	process implementation TempControlProcess.i
 		subcomponents
@@ -112,16 +112,16 @@ end TempControlProcess;
 	end TempControlProcess.i;
 
 	thread TempControl
-	features
-		fanAck: in event data port FanAck;
-		setPoint: in event data port SetPoint.i;
-		fanCmd: out event data port FanCmd;
-		currentTemp: in event data port Temperature.i;
-	properties
-		Dispatch_Protocol => Sporadic;
-		Compute_Execution_Time => 10ms .. 10ms;
-		Stack_Size => TemperatureControl_Properties::StackSize;
-end TempControl;
+		features
+			fanAck: in event data port FanAck;
+			setPoint: in event data port SetPoint.i;
+			fanCmd: out event data port FanCmd;
+			currentTemp: in event data port Temperature.i;
+		properties
+			Dispatch_Protocol => Sporadic;
+			Compute_Execution_Time => 10ms .. 10ms;
+			Stack_Size => TemperatureControl_Properties::StackSize;
+	end TempControl;
 
 	thread implementation TempControl.i
 	end TempControl.i;
