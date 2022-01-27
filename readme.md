@@ -11,7 +11,7 @@ An OVA (Open Virtual Appliance) has been created that has all the development to
 
 ### Import the OVA
 
-1. Download the 6.7GB OVA [here](https://drive.google.com/file/d/16bCMkBtSoHY9fZKJIEKdMjQK5K5C7w0P/view?usp=sharing).
+1. Download the 6.7GB OVA [here](https://drive.google.com/file/d/1IZjiec3aEesARvWXAKccGbI2P0CUsVRk/view?usp=sharing).
 1. In VirtualBox choose ``File >> Import Appliance``
 1. Point to the location of the downloaded ``tccoe22.ova`` file in the dialog box that opens and click ``Continue``.
 1. Review the appliance settings in the next dialog box and choose ``Import``.  This may take a couple of minutes to complete.
