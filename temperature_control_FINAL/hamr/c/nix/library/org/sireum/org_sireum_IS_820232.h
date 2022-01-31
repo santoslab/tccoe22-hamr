@@ -55,12 +55,6 @@ inline B IS_820232__ne(IS_820232 this, IS_820232 other) {
   return !IS_820232__eq(this, other);
 }
 
-inline void IS_820232_toMS(STACK_FRAME MS_D1ED39 result, IS_820232 this) {
-  STATIC_ASSERT(MaxMS_D1ED39 >= MaxIS_820232, "Invalid cast from IS[Z, art.UPort] to MS[...,...].");
-  result->type = TMS_D1ED39;
-  result->size = this->size;
-  memcpy(&result->value, &this->value, this->size * sizeof(union art_UPort));
-}
 
 #ifdef __cplusplus
 }

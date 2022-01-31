@@ -9,14 +9,14 @@ extern "C" {
 
 // Option[t.TemperatureControl.Fan_i_Operational_Api]
 
-#include <type-org_sireum_Some_A89224.h>
 #include <type-org_sireum_None_475EF0.h>
+#include <type-org_sireum_Some_A89224.h>
 
 typedef union Option_A8F8FC *Option_A8F8FC;
 union Option_A8F8FC {
   TYPE type;
-  struct Some_A89224 Some_A89224;
   struct None_475EF0 None_475EF0;
+  struct Some_A89224 Some_A89224;
 };
 
 #define DeclNewOption_A8F8FC(x) union Option_A8F8FC x = { 0 }

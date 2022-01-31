@@ -18,15 +18,13 @@ inline void art_Bridge_string_(STACK_FRAME String result, art_Bridge this) {
   Type_string_(CALLER result, this);
 }
 
+void art_Bridge_name_(STACK_FRAME String result, art_Bridge this);
+
 Z art_Bridge_id_(STACK_FRAME art_Bridge this);
 
 void art_Bridge_dispatchProtocol_(STACK_FRAME art_DispatchPropertyProtocol result, art_Bridge this);
 
-void art_Bridge_name_(STACK_FRAME String result, art_Bridge this);
-
 void art_Bridge_ports_(STACK_FRAME art_Bridge_Ports result, art_Bridge this);
-
-void art_Bridge_entryPoints_(STACK_FRAME art_Bridge_EntryPoints result, art_Bridge this);
 
 #ifdef __cplusplus
 }

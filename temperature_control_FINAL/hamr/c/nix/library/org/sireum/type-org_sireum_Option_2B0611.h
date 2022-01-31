@@ -9,14 +9,14 @@ extern "C" {
 
 // Option[t.TemperatureControl.FanCmd.Type]
 
-#include <type-org_sireum_Some_779716.h>
 #include <type-org_sireum_None_380ACD.h>
+#include <type-org_sireum_Some_779716.h>
 
 typedef union Option_2B0611 *Option_2B0611;
 union Option_2B0611 {
   TYPE type;
-  struct Some_779716 Some_779716;
   struct None_380ACD None_380ACD;
+  struct Some_779716 Some_779716;
 };
 
 #define DeclNewOption_2B0611(x) union Option_2B0611 x = { 0 }

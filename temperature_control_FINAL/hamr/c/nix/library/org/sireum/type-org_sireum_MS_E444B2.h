@@ -10,7 +10,7 @@ extern "C" {
 // MS[Z, IS[Z, Z]]
 #include <type-org_sireum_IS_82ABD8.h>
 
-#define MaxMS_E444B2 13
+#define MaxMS_E444B2 16
 #define MS_E444B2SizeT int8_t
 
 typedef struct MS_E444B2 *MS_E444B2;

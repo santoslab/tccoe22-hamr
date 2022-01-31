@@ -4,60 +4,57 @@
 
 // This file will not be overwritten so is safe to edit
 
-static char *component_id = "TempControlSystem_i_Instance_tsp_tempSensor";
+static char* component_id = "TempControlSystem_i_Instance_tsp_tempSensor";
 
-void senseTemperature(t_TemperatureControl_Temperature_i result);
+struct t_TemperatureControl_Temperature_i lastTemp;
 
-struct t_TemperatureControl_Temperature_i lastTemperature;
+void senseTemp(STACK_FRAME t_TemperatureControl_Temperature_i);
+
 int delta = 4;
 
 Unit t_TemperatureControl_TempSensor_i_tsp_tempSensor_initialise_(STACK_FRAME_ONLY) {
-  DeclNewStackFrame(caller, "TempSensor_i_tsp_tempSensor.c", "",
-                    "t_TemperatureControl_TempSensor_i_tsp_tempSensor_initialise_", 0);
+  DeclNewStackFrame(caller, "TempSensor_i_tsp_tempSensor.c", "", "t_TemperatureControl_TempSensor_i_tsp_tempSensor_initialise_", 0);
 
-  lastTemperature = createTempInFahrenheit(80.0);
+  DeclNewt_TemperatureControl_Temperature_i(t0);
+  createTempInFahrenheit(SF 80.0, &t0);
+  api_put_currentTemp__t_TemperatureControl_TempSensor_i_tsp_tempSensor(SF &t0);
 
-  // initialize outgoing data port
-  api_put_currentTemp__t_TemperatureControl_TempSensor_i_tsp_tempSensor(SF
-                                                                        &lastTemperature);
+  lastTemp = t0;
+
+  api_put_tempChanged__t_TemperatureControl_TempSensor_i_tsp_tempSensor(SF_LAST);
+}
+
+Unit t_TemperatureControl_TempSensor_i_tsp_tempSensor_finalise_(STACK_FRAME_ONLY) {
+  DeclNewStackFrame(caller, "TempSensor_i_tsp_tempSensor.c", "", "t_TemperatureControl_TempSensor_i_tsp_tempSensor_finalise_", 0);
 }
 
 Unit t_TemperatureControl_TempSensor_i_tsp_tempSensor_timeTriggered_(STACK_FRAME_ONLY) {
-  DeclNewStackFrame(caller, "TempSensor_i_tsp_tempSensor.c", "",
-                    "t_TemperatureControl_TempSensor_i_tsp_tempSensor_timeTriggered_", 0);
+  DeclNewStackFrame(caller, "TempSensor_i_tsp_tempSensor.c", "", "t_TemperatureControl_TempSensor_i_tsp_tempSensor_timeTriggered_", 0);
 
   DeclNewt_TemperatureControl_Temperature_i(currTemp);
-  senseTemperature(&currTemp);
-  if (lastTemperature.degrees != currTemp.degrees) {
-    lastTemperature = currTemp;
+  senseTemp(SF &currTemp);
+  convertTempToFahrenheit(SF &currTemp);
 
-    api_put_currentTemp__t_TemperatureControl_TempSensor_i_tsp_tempSensor(SF
-                                                                          &lastTemperature);
+  api_put_currentTemp__t_TemperatureControl_TempSensor_i_tsp_tempSensor(SF &currTemp);
+
+  if(lastTemp.degrees != currTemp.degrees) {
+    lastTemp = currTemp;
 
     api_put_tempChanged__t_TemperatureControl_TempSensor_i_tsp_tempSensor(SF_LAST);
   }
 }
 
-void senseTemperature(t_TemperatureControl_Temperature_i result) {
-  // simulate getting temperature from sensor
+void senseTemp(STACK_FRAME t_TemperatureControl_Temperature_i result){
+  DeclNewStackFrame(caller, "TempSensor_i_tsp_tempSensor.c", "", "senseTemp", 0);
 
-  result->degrees = lastTemperature.degrees + delta;
-  result->unit = lastTemperature.unit;
+  result->degrees = lastTemp.degrees + delta;
+  result->unit = t_TemperatureControl_TempUnit_Type_Fahrenheit;
 
-#ifndef SIREUM_NO_PRINT
-  DeclNewString(_str);
-  String str = (String) &_str;
-  String__append(str, string("Sensed: "));
-  t_TemperatureControl_Temperature_i_string_(SF str, result);
-  api_logInfo__t_TemperatureControl_TempSensor_i_tsp_tempSensor(SF str);
-#endif
+  DeclNewString(currentTemp_str);
+  String__append(SF (String) &currentTemp_str, string("Sensed: "));
+  t_TemperatureControl_Temperature_i_string_(SF (String) &currentTemp_str, result);
+  api_logInfo__t_TemperatureControl_TempSensor_i_tsp_tempSensor(SF (String) &currentTemp_str);
 
-  if (result->degrees < MIN_TEMP) delta = 4;
-  else if (result->degrees > MAX_TEMP) delta = -4;
-}
-
-Unit t_TemperatureControl_TempSensor_i_tsp_tempSensor_finalise_(STACK_FRAME_ONLY) {
-  DeclNewStackFrame(caller, "TempSensor_i_tsp_tempSensor.c", "",
-                    "t_TemperatureControl_TempSensor_i_tsp_tempSensor_finalise_", 0);
-  // do nothing
+  if(result->degrees < MIN_TEMP) delta = 4;
+  else if(result->degrees > MAX_TEMP) delta = -4;
 }

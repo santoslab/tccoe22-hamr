@@ -154,7 +154,7 @@ Unit art_Art_setUpSystemState(STACK_FRAME art_scheduling_Scheduler scheduler) {
 
   sfUpdateLoc(158);
   {
-    art_ArtNativeSlang_setUpSystemState(SF_LAST);
+    t_ArtNix_setUpSystemState(SF_LAST);
   }
 
   sfUpdateLoc(159);
@@ -168,7 +168,7 @@ Unit art_Art_initializePhase(STACK_FRAME art_scheduling_Scheduler scheduler) {
 
   sfUpdateLoc(137);
   {
-    art_ArtNativeSlang_initializePhase(SF_LAST);
+    t_ArtNix_initializePhase(SF_LAST);
   }
 
   sfUpdateLoc(138);
@@ -182,7 +182,7 @@ Unit art_Art_computePhase(STACK_FRAME art_scheduling_Scheduler scheduler) {
 
   sfUpdateLoc(142);
   {
-    art_ArtNativeSlang_computePhase(SF_LAST);
+    t_ArtNix_computePhase(SF_LAST);
   }
 
   sfUpdateLoc(143);
@@ -196,7 +196,7 @@ Unit art_Art_finalizePhase(STACK_FRAME art_scheduling_Scheduler scheduler) {
 
   sfUpdateLoc(147);
   {
-    art_ArtNativeSlang_finalizePhase(SF_LAST);
+    t_ArtNix_finalizePhase(SF_LAST);
   }
 
   sfUpdateLoc(148);
@@ -210,7 +210,7 @@ Unit art_Art_tearDownSystemState(STACK_FRAME_ONLY) {
 
   sfUpdateLoc(163);
   {
-    art_ArtNativeSlang_tearDownSystemState(SF_LAST);
+    t_ArtNix_tearDownSystemState(SF_LAST);
   }
 }
 
@@ -220,6 +220,133 @@ Unit art_Art_tearDownPlatform(STACK_FRAME_ONLY) {
 
 Unit art_Art_tearDownArchitecture(STACK_FRAME_ONLY) {
   DeclNewStackFrame(caller, "Art.scala", "art.Art", "tearDownArchitecture", 0);
+}
+
+Unit art_Art_logInfo(STACK_FRAME Z bridgeId, String msg) {
+  DeclNewStackFrame(caller, "Art.scala", "art.Art", "logInfo", 0);
+
+  sfUpdateLoc(78);
+  B t_0;
+  {
+    B t_1 = Option_7BBFBE_nonEmpty_(SF MS_83D5EB_at(art_Art_bridges(SF_LAST), bridgeId));
+    t_0 = t_1;
+  }
+  if (t_0) {
+
+    sfUpdateLoc(79);
+    {
+      DeclNewart_Bridge(t_2);
+      Option_7BBFBE_get_(SF (art_Bridge) &t_2, MS_83D5EB_at(art_Art_bridges(SF_LAST), bridgeId));
+      DeclNewString(t_3);
+      art_Bridge_name_(SF (String) &t_3, ((art_Bridge) &t_2));
+      t_ArtNix_logInfo(SF (String) ((String) &t_3), (String) msg);
+    }
+  } else {
+
+    sfUpdateLoc(81);
+    {
+      t_ArtNix_logInfo(SF (String) string(""), (String) msg);
+    }
+  }
+}
+
+Unit art_Art_logDebug(STACK_FRAME Z bridgeId, String msg) {
+  DeclNewStackFrame(caller, "Art.scala", "art.Art", "logDebug", 0);
+
+  sfUpdateLoc(94);
+  B t_0;
+  {
+    B t_1 = Option_7BBFBE_nonEmpty_(SF MS_83D5EB_at(art_Art_bridges(SF_LAST), bridgeId));
+    t_0 = t_1;
+  }
+  if (t_0) {
+
+    sfUpdateLoc(95);
+    {
+      DeclNewart_Bridge(t_2);
+      Option_7BBFBE_get_(SF (art_Bridge) &t_2, MS_83D5EB_at(art_Art_bridges(SF_LAST), bridgeId));
+      DeclNewString(t_3);
+      art_Bridge_name_(SF (String) &t_3, ((art_Bridge) &t_2));
+      t_ArtNix_logDebug(SF (String) ((String) &t_3), (String) msg);
+    }
+  } else {
+
+    sfUpdateLoc(97);
+    {
+      t_ArtNix_logDebug(SF (String) string(""), (String) msg);
+    }
+  }
+}
+
+Unit art_Art_logError(STACK_FRAME Z bridgeId, String msg) {
+  DeclNewStackFrame(caller, "Art.scala", "art.Art", "logError", 0);
+
+  sfUpdateLoc(86);
+  B t_0;
+  {
+    B t_1 = Option_7BBFBE_nonEmpty_(SF MS_83D5EB_at(art_Art_bridges(SF_LAST), bridgeId));
+    t_0 = t_1;
+  }
+  if (t_0) {
+
+    sfUpdateLoc(87);
+    {
+      DeclNewart_Bridge(t_2);
+      Option_7BBFBE_get_(SF (art_Bridge) &t_2, MS_83D5EB_at(art_Art_bridges(SF_LAST), bridgeId));
+      DeclNewString(t_3);
+      art_Bridge_name_(SF (String) &t_3, ((art_Bridge) &t_2));
+      t_ArtNix_logError(SF (String) ((String) &t_3), (String) msg);
+    }
+  } else {
+
+    sfUpdateLoc(89);
+    {
+      t_ArtNix_logError(SF (String) string(""), (String) msg);
+    }
+  }
+}
+
+Unit art_Art_putValue(STACK_FRAME Z portId, art_DataContent data) {
+  DeclNewStackFrame(caller, "Art.scala", "art.Art", "putValue", 0);
+
+  sfUpdateLoc(62);
+  {
+    t_ArtNix_putValue(SF portId, (art_DataContent) data);
+  }
+}
+
+void art_Art_getValue(STACK_FRAME Option_8E9F45 result, Z portId) {
+  DeclNewStackFrame(caller, "Art.scala", "art.Art", "getValue", 0);
+  DeclNewOption_8E9F45(t_0);
+  t_ArtNix_getValue(SF (Option_8E9F45) &t_0, portId);
+  Type_assign(result, ((Option_8E9F45) &t_0), sizeof(union Option_8E9F45));
+  return;
+}
+
+Unit art_Art_sendOutput(STACK_FRAME IS_82ABD8 eventPortIds, IS_82ABD8 dataPortIds) {
+  DeclNewStackFrame(caller, "Art.scala", "art.Art", "sendOutput", 0);
+
+  sfUpdateLoc(70);
+  {
+    t_ArtNix_sendOutput(SF (IS_82ABD8) eventPortIds, (IS_82ABD8) dataPortIds);
+  }
+}
+
+Unit art_Art_receiveInput(STACK_FRAME IS_82ABD8 eventPortIds, IS_82ABD8 dataPortIds) {
+  DeclNewStackFrame(caller, "Art.scala", "art.Art", "receiveInput", 0);
+
+  sfUpdateLoc(58);
+  {
+    t_ArtNix_receiveInput(SF (IS_82ABD8) eventPortIds, (IS_82ABD8) dataPortIds);
+  }
+}
+
+void art_Art_dispatchStatus(STACK_FRAME art_DispatchStatus result, Z bridgeId) {
+  DeclNewStackFrame(caller, "Art.scala", "art.Art", "dispatchStatus", 0);
+  DeclNewart_DispatchStatus(t_0);
+  t_ArtNix_dispatchStatus(SF (art_DispatchStatus) &t_0, bridgeId);
+  Type_assign(result, ((art_DispatchStatus) &t_0), sizeof(union art_DispatchStatus));
+  return;
 }
 
 inline B art_Art_register_extract_36_12(STACK_FRAME_SF art_DispatchPropertyProtocol t_2, Z *_period_36_46) {
@@ -285,7 +412,7 @@ Unit art_Art_m_register(STACK_FRAME art_Bridge bridge) {
         String_string_(SF (String) &t_4, string(" (periodic: "));
         Z_string_(SF (String) &t_4, period_36_46);
         String_string_(SF (String) &t_4, string(")"));
-        art_ArtNativeSlang_logInfo(SF (String) art_Art_logTitle(SF_LAST), (String) ((String) &t_4));
+        t_ArtNix_logInfo(SF (String) art_Art_logTitle(SF_LAST), (String) ((String) &t_4));
       }
     }
   }
@@ -304,7 +431,7 @@ Unit art_Art_m_register(STACK_FRAME art_Bridge bridge) {
         String_string_(SF (String) &t_6, string(" (sporadic: "));
         Z_string_(SF (String) &t_6, min_38_46);
         String_string_(SF (String) &t_6, string(")"));
-        art_ArtNativeSlang_logInfo(SF (String) art_Art_logTitle(SF_LAST), (String) ((String) &t_6));
+        t_ArtNix_logInfo(SF (String) art_Art_logTitle(SF_LAST), (String) ((String) &t_6));
       }
     }
   }
@@ -343,7 +470,7 @@ Unit art_Art_m_register(STACK_FRAME art_Bridge bridge) {
             art_UPort_name_(SF (String) &t_13, port);
             String_string_(SF (String) &t_12, ((String) &t_13));
             String_string_(SF (String) &t_12, string(" (data in)"));
-            art_ArtNativeSlang_logInfo(SF (String) art_Art_logTitle(SF_LAST), (String) ((String) &t_12));
+            t_ArtNix_logInfo(SF (String) art_Art_logTitle(SF_LAST), (String) ((String) &t_12));
           }
         }
       }
@@ -359,7 +486,7 @@ Unit art_Art_m_register(STACK_FRAME art_Bridge bridge) {
             art_UPort_name_(SF (String) &t_15, port);
             String_string_(SF (String) &t_14, ((String) &t_15));
             String_string_(SF (String) &t_14, string(" (data out)"));
-            art_ArtNativeSlang_logInfo(SF (String) art_Art_logTitle(SF_LAST), (String) ((String) &t_14));
+            t_ArtNix_logInfo(SF (String) art_Art_logTitle(SF_LAST), (String) ((String) &t_14));
           }
         }
       }
@@ -375,7 +502,7 @@ Unit art_Art_m_register(STACK_FRAME art_Bridge bridge) {
             art_UPort_name_(SF (String) &t_17, port);
             String_string_(SF (String) &t_16, ((String) &t_17));
             String_string_(SF (String) &t_16, string(" (event in)"));
-            art_ArtNativeSlang_logInfo(SF (String) art_Art_logTitle(SF_LAST), (String) ((String) &t_16));
+            t_ArtNix_logInfo(SF (String) art_Art_logTitle(SF_LAST), (String) ((String) &t_16));
           }
         }
       }
@@ -391,7 +518,7 @@ Unit art_Art_m_register(STACK_FRAME art_Bridge bridge) {
             art_UPort_name_(SF (String) &t_19, port);
             String_string_(SF (String) &t_18, ((String) &t_19));
             String_string_(SF (String) &t_18, string(" (event out)"));
-            art_ArtNativeSlang_logInfo(SF (String) art_Art_logTitle(SF_LAST), (String) ((String) &t_18));
+            t_ArtNix_logInfo(SF (String) art_Art_logTitle(SF_LAST), (String) ((String) &t_18));
           }
         }
       }
@@ -425,161 +552,8 @@ Unit art_Art_connect(STACK_FRAME art_UPort from, art_UPort to) {
     art_UPort_name_(SF (String) &t_6, to);
     String_string_(SF (String) &t_4, ((String) &t_6));
     String_string_(SF (String) &t_4, string(""));
-    art_ArtNativeSlang_logInfo(SF (String) art_Art_logTitle(SF_LAST), (String) ((String) &t_4));
+    t_ArtNix_logInfo(SF (String) art_Art_logTitle(SF_LAST), (String) ((String) &t_4));
   }
-}
-
-Unit art_Art_logInfo(STACK_FRAME Z bridgeId, String msg) {
-  DeclNewStackFrame(caller, "Art.scala", "art.Art", "logInfo", 0);
-
-  sfUpdateLoc(78);
-  B t_0;
-  {
-    B t_1 = Option_7BBFBE_nonEmpty_(SF MS_83D5EB_at(art_Art_bridges(SF_LAST), bridgeId));
-    t_0 = t_1;
-  }
-  if (t_0) {
-
-    sfUpdateLoc(79);
-    {
-      DeclNewart_Bridge(t_2);
-      Option_7BBFBE_get_(SF (art_Bridge) &t_2, MS_83D5EB_at(art_Art_bridges(SF_LAST), bridgeId));
-      DeclNewString(t_3);
-      art_Bridge_name_(SF (String) &t_3, ((art_Bridge) &t_2));
-      art_ArtNativeSlang_logInfo(SF (String) ((String) &t_3), (String) msg);
-    }
-  } else {
-
-    sfUpdateLoc(81);
-    {
-      art_ArtNativeSlang_logInfo(SF (String) string(""), (String) msg);
-    }
-  }
-}
-
-Unit art_Art_logDebug(STACK_FRAME Z bridgeId, String msg) {
-  DeclNewStackFrame(caller, "Art.scala", "art.Art", "logDebug", 0);
-
-  sfUpdateLoc(94);
-  B t_0;
-  {
-    B t_1 = Option_7BBFBE_nonEmpty_(SF MS_83D5EB_at(art_Art_bridges(SF_LAST), bridgeId));
-    t_0 = t_1;
-  }
-  if (t_0) {
-
-    sfUpdateLoc(95);
-    {
-      DeclNewart_Bridge(t_2);
-      Option_7BBFBE_get_(SF (art_Bridge) &t_2, MS_83D5EB_at(art_Art_bridges(SF_LAST), bridgeId));
-      DeclNewString(t_3);
-      art_Bridge_name_(SF (String) &t_3, ((art_Bridge) &t_2));
-      art_ArtNativeSlang_logDebug(SF (String) ((String) &t_3), (String) msg);
-    }
-  } else {
-
-    sfUpdateLoc(97);
-    {
-      art_ArtNativeSlang_logDebug(SF (String) string(""), (String) msg);
-    }
-  }
-}
-
-Unit art_Art_logError(STACK_FRAME Z bridgeId, String msg) {
-  DeclNewStackFrame(caller, "Art.scala", "art.Art", "logError", 0);
-
-  sfUpdateLoc(86);
-  B t_0;
-  {
-    B t_1 = Option_7BBFBE_nonEmpty_(SF MS_83D5EB_at(art_Art_bridges(SF_LAST), bridgeId));
-    t_0 = t_1;
-  }
-  if (t_0) {
-
-    sfUpdateLoc(87);
-    {
-      DeclNewart_Bridge(t_2);
-      Option_7BBFBE_get_(SF (art_Bridge) &t_2, MS_83D5EB_at(art_Art_bridges(SF_LAST), bridgeId));
-      DeclNewString(t_3);
-      art_Bridge_name_(SF (String) &t_3, ((art_Bridge) &t_2));
-      art_ArtNativeSlang_logError(SF (String) ((String) &t_3), (String) msg);
-    }
-  } else {
-
-    sfUpdateLoc(89);
-    {
-      art_ArtNativeSlang_logError(SF (String) string(""), (String) msg);
-    }
-  }
-}
-
-Unit art_Art_putValue(STACK_FRAME Z portId, art_DataContent data) {
-  DeclNewStackFrame(caller, "Art.scala", "art.Art", "putValue", 0);
-
-  sfUpdateLoc(62);
-  {
-    art_ArtNativeSlang_putValue(SF portId, (art_DataContent) data);
-  }
-}
-
-void art_Art_getValue(STACK_FRAME Option_8E9F45 result, Z portId) {
-  DeclNewStackFrame(caller, "Art.scala", "art.Art", "getValue", 0);
-  DeclNewOption_8E9F45(t_0);
-  art_ArtNativeSlang_getValue(SF (Option_8E9F45) &t_0, portId);
-  Type_assign(result, ((Option_8E9F45) &t_0), sizeof(union Option_8E9F45));
-  return;
-}
-
-S64 art_Art_time(STACK_FRAME_ONLY) {
-  DeclNewStackFrame(caller, "Art.scala", "art.Art", "time", 0);
-  return art_ArtNativeSlang_time(SF_LAST);
-}
-
-Unit art_Art_sendOutput(STACK_FRAME IS_82ABD8 eventPortIds, IS_82ABD8 dataPortIds) {
-  DeclNewStackFrame(caller, "Art.scala", "art.Art", "sendOutput", 0);
-
-  sfUpdateLoc(70);
-  {
-    art_ArtNativeSlang_sendOutput(SF (IS_82ABD8) eventPortIds, (IS_82ABD8) dataPortIds);
-  }
-}
-
-void art_Art_dispatchStatus(STACK_FRAME art_DispatchStatus result, Z bridgeId) {
-  DeclNewStackFrame(caller, "Art.scala", "art.Art", "dispatchStatus", 0);
-  DeclNewart_DispatchStatus(t_0);
-  art_ArtNativeSlang_dispatchStatus(SF (art_DispatchStatus) &t_0, bridgeId);
-  Type_assign(result, ((art_DispatchStatus) &t_0), sizeof(union art_DispatchStatus));
-  return;
-}
-
-Unit art_Art_receiveInput(STACK_FRAME IS_82ABD8 eventPortIds, IS_82ABD8 dataPortIds) {
-  DeclNewStackFrame(caller, "Art.scala", "art.Art", "receiveInput", 0);
-
-  sfUpdateLoc(58);
-  {
-    art_ArtNativeSlang_receiveInput(SF (IS_82ABD8) eventPortIds, (IS_82ABD8) dataPortIds);
-  }
-}
-
-inline B art_Art_port_extract_29_9_6239DB(STACK_FRAME_SF Option_6239DB t_0, art_UPort *_r) {
-  if (!Some_3E197E__is(SF t_0)) return F;
-  *_r = (art_UPort) Some_3E197E_value_(Some_3E197E__as(SF t_0));
-  return T;
-}
-
-void art_Art_port(STACK_FRAME art_UPort result, Z p) {
-  DeclNewStackFrame(caller, "Art.scala", "art.Art", "port", 0);
-
-  sfUpdateLoc(29);
-  DeclNewOption_6239DB(_t_0);
-  Option_6239DB t_0 = (Option_6239DB) &_t_0;;
-  {
-    Type_assign(t_0, MS_F55A18_at(art_Art_ports(SF_LAST), p), sizeof(union Option_6239DB));
-  }
-  art_UPort r;
-  sfAssert(art_Art_port_extract_29_9_6239DB(SF t_0, &r), "Error during var pattern matching.");
-  Type_assign(result, r, sizeof(union art_UPort));
-  return;
 }
 
 void art_Art_init_maxComponents(STACK_FRAME_ONLY) {

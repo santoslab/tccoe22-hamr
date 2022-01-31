@@ -9,14 +9,14 @@ extern "C" {
 
 // Option[t.TemperatureControl.TempControl_i_Operational_Api]
 
-#include <type-org_sireum_Some_E49AF0.h>
 #include <type-org_sireum_None_A41F76.h>
+#include <type-org_sireum_Some_E49AF0.h>
 
 typedef union Option_3B7208 *Option_3B7208;
 union Option_3B7208 {
   TYPE type;
-  struct Some_E49AF0 Some_E49AF0;
   struct None_A41F76 None_A41F76;
+  struct Some_E49AF0 Some_E49AF0;
 };
 
 #define DeclNewOption_3B7208(x) union Option_3B7208 x = { 0 }

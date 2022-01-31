@@ -9,7 +9,7 @@ extern "C" {
 
 // IS[Z, Z]
 
-#define MaxIS_82ABD8 13
+#define MaxIS_82ABD8 16
 #define IS_82ABD8SizeT int8_t
 
 typedef struct IS_82ABD8 *IS_82ABD8;

@@ -1,5 +1,23 @@
 #include <all.h>
 
+Z None_76463B_get_(STACK_FRAME None_76463B this) {
+  DeclNewStackFrame(caller, "Option.scala", "org.sireum.None", "get", 0);
+
+  sfUpdateLoc(176);
+  {
+    DeclNewString(t_0);
+    String t_1 = (String) &t_0;
+    String_string_(SF t_1, string("Invalid 'None' operation 'get'."));
+    sfAbort(t_1->value);
+    abort();
+  }
+}
+
+B None_964667_isEmpty_(STACK_FRAME None_964667 this) {
+  DeclNewStackFrame(caller, "Option.scala", "org.sireum.None", "isEmpty", 0);
+  return T;
+}
+
 t_TemperatureControl_TempUnit_Type None_3FD7F9_get_(STACK_FRAME None_3FD7F9 this) {
   DeclNewStackFrame(caller, "Option.scala", "org.sireum.None", "get", 0);
 
@@ -117,24 +135,6 @@ void None_475EF0_get_(STACK_FRAME t_TemperatureControl_Fan_i_Operational_Api res
   }
 }
 
-B None_734370_nonEmpty_(STACK_FRAME None_734370 this) {
-  DeclNewStackFrame(caller, "Option.scala", "org.sireum.None", "nonEmpty", 0);
-  return F;
-}
-
-void None_734370_get_(STACK_FRAME art_Bridge result, None_734370 this) {
-  DeclNewStackFrame(caller, "Option.scala", "org.sireum.None", "get", 0);
-
-  sfUpdateLoc(176);
-  {
-    DeclNewString(t_0);
-    String t_1 = (String) &t_0;
-    String_string_(SF t_1, string("Invalid 'None' operation 'get'."));
-    sfAbort(t_1->value);
-    abort();
-  }
-}
-
 B None_5C1355_isEmpty_(STACK_FRAME None_5C1355 this) {
   DeclNewStackFrame(caller, "Option.scala", "org.sireum.None", "isEmpty", 0);
   return T;
@@ -153,7 +153,12 @@ void None_5C1355_get_(STACK_FRAME IS_82ABD8 result, None_5C1355 this) {
   }
 }
 
-void None_50AF88_get_(STACK_FRAME art_ArtSlangMessage result, None_50AF88 this) {
+B None_734370_nonEmpty_(STACK_FRAME None_734370 this) {
+  DeclNewStackFrame(caller, "Option.scala", "org.sireum.None", "nonEmpty", 0);
+  return F;
+}
+
+void None_734370_get_(STACK_FRAME art_Bridge result, None_734370 this) {
   DeclNewStackFrame(caller, "Option.scala", "org.sireum.None", "get", 0);
 
   sfUpdateLoc(176);
@@ -166,7 +171,7 @@ void None_50AF88_get_(STACK_FRAME art_ArtSlangMessage result, None_50AF88 this) 
   }
 }
 
-B None_50AF88_nonEmpty_(STACK_FRAME None_50AF88 this) {
+B None_964667_nonEmpty_(STACK_FRAME None_964667 this) {
   DeclNewStackFrame(caller, "Option.scala", "org.sireum.None", "nonEmpty", 0);
   return F;
 }

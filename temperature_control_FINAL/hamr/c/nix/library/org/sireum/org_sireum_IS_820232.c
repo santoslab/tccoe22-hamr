@@ -114,5 +114,3 @@ void IS_820232_string_(STACK_FRAME String result, IS_820232 this) {
 }
 
 B IS_820232__ne(IS_820232 this, IS_820232 other);
-
-void IS_820232_toMS(STACK_FRAME MS_D1ED39 result, IS_820232 this);

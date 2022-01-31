@@ -18,6 +18,8 @@ inline void Option_882048_string_(STACK_FRAME String result, Option_882048 this)
   Type_string_(CALLER result, this);
 }
 
+Z Option_882048_get_(STACK_FRAME Option_882048 this);
+
 #ifdef __cplusplus
 }
 #endif

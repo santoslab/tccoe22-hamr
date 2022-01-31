@@ -40,6 +40,7 @@ public
 	------------------------------------------------------------------------------
 	process TempSensorProcess
 		features
+
 			currentTemp: out data port Temperature.i;
 			tempChanged: out event port;
 	end TempSensorProcess;
@@ -54,6 +55,7 @@ public
 
 	thread TempSensor
 		features
+
 			currentTemp: out data port Temperature.i;
 			tempChanged: out event port;
 		properties
@@ -103,6 +105,7 @@ public
 			fanAck: in event data port FanAck;
 			setPoint: in event data port SetPoint.i;
 			fanCmd: out event data port FanCmd;
+
 	end TempControlProcess;
 
 	process implementation TempControlProcess.i
@@ -123,6 +126,7 @@ public
 			fanAck: in event data port FanAck;
 			setPoint: in event data port SetPoint.i;
 			fanCmd: out event data port FanCmd;
+
 		properties
 			Dispatch_Protocol => Sporadic;
 			Compute_Execution_Time => 10ms .. 10ms;

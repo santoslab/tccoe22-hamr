@@ -86,13 +86,13 @@ endif(WITH_LOC)
 
 
 add_library(main STATIC
-        runtime/type.h
+        runtime/misc.h
         runtime/misc.c
+        runtime/lib.h
+        runtime/type.h
+        runtime/type.c
         runtime/stackframe.h
         runtime/stackframe.c
-        runtime/type.c
-        runtime/misc.h
-        runtime/lib.h
         runtime/ztype.h
         runtime/type-composite.h
         runtime/types.h
@@ -105,12 +105,6 @@ add_library(main STATIC
         library/art/type-art_Art.h
         library/art/art_Art.h
         library/art/art_Art.c
-        library/art/type-art_ArtNativeSlang.h
-        library/art/art_ArtNativeSlang.h
-        library/art/art_ArtNativeSlang.c
-        library/art/type-art_ArtSlangMessage.h
-        library/art/art_ArtSlangMessage.h
-        library/art/art_ArtSlangMessage.c
         library/art/type-art_Bridge.h
         library/art/art_Bridge.h
         library/art/art_Bridge.c
@@ -147,11 +141,6 @@ add_library(main STATIC
         library/art/PortMode/type-art_PortMode_Type.h
         library/art/PortMode/art_PortMode_Type.h
         library/art/PortMode/art_PortMode_Type.c
-        library/art/type-art_PortProto.h
-        library/art/art_PortProto.h
-        library/art/art_PortProto.c
-        library/art/type-art_Process.h
-        library/art/art_Process.h
         library/art/type-art_TimeTriggered.h
         library/art/art_TimeTriggered.h
         library/art/art_TimeTriggered.c
@@ -161,9 +150,6 @@ add_library(main STATIC
         library/art/type-art_UPort.h
         library/art/art_UPort.h
         library/art/art_UPort.c
-        library/art/type-art_UrgentPortProto.h
-        library/art/art_UrgentPortProto.h
-        library/art/art_UrgentPortProto.c
         library/art/type-art_art_Port_0A16CC.h
         library/art/art_art_Port_0A16CC.h
         library/art/art_art_Port_0A16CC.c
@@ -182,46 +168,12 @@ add_library(main STATIC
         library/art/scheduling/type-art_scheduling_Scheduler.h
         library/art/scheduling/art_scheduling_Scheduler.h
         library/art/scheduling/art_scheduling_Scheduler.c
-        library/art/scheduling/legacy/type-art_scheduling_legacy_Legacy.h
-        library/art/scheduling/legacy/art_scheduling_legacy_Legacy.h
-        library/art/scheduling/legacy/art_scheduling_legacy_Legacy.c
-        library/art/scheduling/legacy/type-art_scheduling_legacy_LegacyInterface.h
-        library/art/scheduling/legacy/art_scheduling_legacy_LegacyInterface.h
-        library/art/scheduling/roundrobin/type-art_scheduling_roundrobin_RoundRobin.h
-        library/art/scheduling/roundrobin/art_scheduling_roundrobin_RoundRobin.h
-        library/art/scheduling/roundrobin/art_scheduling_roundrobin_RoundRobin.c
-        library/art/scheduling/roundrobin/type-art_scheduling_roundrobin_RoundRobinExtensions.h
-        library/art/scheduling/roundrobin/art_scheduling_roundrobin_RoundRobinExtensions.h
-        library/art/scheduling/static/type-art_scheduling_static_Explorer.h
-        library/art/scheduling/static/art_scheduling_static_Explorer.h
-        library/art/scheduling/static/art_scheduling_static_Explorer.c
-        library/art/scheduling/static/Explorer/type-art_scheduling_static_Explorer_ScheduleState.h
-        library/art/scheduling/static/Explorer/art_scheduling_static_Explorer_ScheduleState.h
-        library/art/scheduling/static/Explorer/art_scheduling_static_Explorer_ScheduleState.c
-        library/art/scheduling/static/type-art_scheduling_static_Schedule.h
-        library/art/scheduling/static/art_scheduling_static_Schedule.h
-        library/art/scheduling/static/art_scheduling_static_Schedule.c
-        library/art/scheduling/static/Schedule/type-art_scheduling_static_Schedule_DSchedule.h
-        library/art/scheduling/static/Schedule/art_scheduling_static_Schedule_DSchedule.h
-        library/art/scheduling/static/Schedule/art_scheduling_static_Schedule_DSchedule.c
-        library/art/scheduling/static/Schedule/type-art_scheduling_static_Schedule_DScheduleSpec.h
-        library/art/scheduling/static/Schedule/art_scheduling_static_Schedule_DScheduleSpec.h
-        library/art/scheduling/static/Schedule/art_scheduling_static_Schedule_DScheduleSpec.c
-        library/art/scheduling/static/Schedule/type-art_scheduling_static_Schedule_Slot.h
-        library/art/scheduling/static/Schedule/art_scheduling_static_Schedule_Slot.h
-        library/art/scheduling/static/Schedule/art_scheduling_static_Schedule_Slot.c
-        library/art/scheduling/static/type-art_scheduling_static_StaticScheduler.h
-        library/art/scheduling/static/art_scheduling_static_StaticScheduler.h
-        library/art/scheduling/static/art_scheduling_static_StaticScheduler.c
+        library/art/scheduling/nop/type-art_scheduling_nop_NopScheduler.h
+        library/art/scheduling/nop/art_scheduling_nop_NopScheduler.h
+        library/art/scheduling/nop/art_scheduling_nop_NopScheduler.c
         library/org/sireum/type-org_sireum_IS_08117A.h
         library/org/sireum/org_sireum_IS_08117A.h
         library/org/sireum/org_sireum_IS_08117A.c
-        library/org/sireum/type-org_sireum_IS_4D6DA5.h
-        library/org/sireum/org_sireum_IS_4D6DA5.h
-        library/org/sireum/org_sireum_IS_4D6DA5.c
-        library/org/sireum/type-org_sireum_IS_5AA467.h
-        library/org/sireum/org_sireum_IS_5AA467.h
-        library/org/sireum/org_sireum_IS_5AA467.c
         library/org/sireum/type-org_sireum_IS_7E8796.h
         library/org/sireum/org_sireum_IS_7E8796.h
         library/org/sireum/org_sireum_IS_7E8796.c
@@ -234,33 +186,33 @@ add_library(main STATIC
         library/org/sireum/type-org_sireum_IS_948B60.h
         library/org/sireum/org_sireum_IS_948B60.h
         library/org/sireum/org_sireum_IS_948B60.c
+        library/org/sireum/type-org_sireum_IS_AA0F82.h
+        library/org/sireum/org_sireum_IS_AA0F82.h
+        library/org/sireum/org_sireum_IS_AA0F82.c
         library/org/sireum/type-org_sireum_MBox2_1029D1.h
         library/org/sireum/org_sireum_MBox2_1029D1.h
         library/org/sireum/org_sireum_MBox2_1029D1.c
         library/org/sireum/type-org_sireum_MBox2_1CBFC4.h
         library/org/sireum/org_sireum_MBox2_1CBFC4.h
         library/org/sireum/org_sireum_MBox2_1CBFC4.c
-        library/org/sireum/type-org_sireum_MS_1E4216.h
-        library/org/sireum/org_sireum_MS_1E4216.h
-        library/org/sireum/org_sireum_MS_1E4216.c
+        library/org/sireum/type-org_sireum_MS_2590FE.h
+        library/org/sireum/org_sireum_MS_2590FE.h
+        library/org/sireum/org_sireum_MS_2590FE.c
+        library/org/sireum/type-org_sireum_MS_30A5B4.h
+        library/org/sireum/org_sireum_MS_30A5B4.h
+        library/org/sireum/org_sireum_MS_30A5B4.c
         library/org/sireum/type-org_sireum_MS_83D5EB.h
         library/org/sireum/org_sireum_MS_83D5EB.h
         library/org/sireum/org_sireum_MS_83D5EB.c
-        library/org/sireum/type-org_sireum_MS_D1ED39.h
-        library/org/sireum/org_sireum_MS_D1ED39.h
-        library/org/sireum/org_sireum_MS_D1ED39.c
+        library/org/sireum/type-org_sireum_MS_B5E3E6.h
+        library/org/sireum/org_sireum_MS_B5E3E6.h
+        library/org/sireum/org_sireum_MS_B5E3E6.c
         library/org/sireum/type-org_sireum_MS_E444B2.h
         library/org/sireum/org_sireum_MS_E444B2.h
         library/org/sireum/org_sireum_MS_E444B2.c
         library/org/sireum/type-org_sireum_MS_F55A18.h
         library/org/sireum/org_sireum_MS_F55A18.h
         library/org/sireum/org_sireum_MS_F55A18.c
-        library/org/sireum/type-org_sireum_Map.h
-        library/org/sireum/org_sireum_Map.h
-        library/org/sireum/org_sireum_Map.c
-        library/org/sireum/type-org_sireum_Map_9C6840.h
-        library/org/sireum/org_sireum_Map_9C6840.h
-        library/org/sireum/org_sireum_Map_9C6840.c
         library/org/sireum/type-org_sireum_None.h
         library/org/sireum/org_sireum_None.h
         library/org/sireum/org_sireum_None.c
@@ -279,18 +231,12 @@ add_library(main STATIC
         library/org/sireum/type-org_sireum_None_4CBE13.h
         library/org/sireum/org_sireum_None_4CBE13.h
         library/org/sireum/org_sireum_None_4CBE13.c
-        library/org/sireum/type-org_sireum_None_50AF88.h
-        library/org/sireum/org_sireum_None_50AF88.h
-        library/org/sireum/org_sireum_None_50AF88.c
         library/org/sireum/type-org_sireum_None_5C1355.h
         library/org/sireum/org_sireum_None_5C1355.h
         library/org/sireum/org_sireum_None_5C1355.c
         library/org/sireum/type-org_sireum_None_68DB3B.h
         library/org/sireum/org_sireum_None_68DB3B.h
         library/org/sireum/org_sireum_None_68DB3B.c
-        library/org/sireum/type-org_sireum_None_72E81E.h
-        library/org/sireum/org_sireum_None_72E81E.h
-        library/org/sireum/org_sireum_None_72E81E.c
         library/org/sireum/type-org_sireum_None_734370.h
         library/org/sireum/org_sireum_None_734370.h
         library/org/sireum/org_sireum_None_734370.c
@@ -303,9 +249,6 @@ add_library(main STATIC
         library/org/sireum/type-org_sireum_None_856E6F.h
         library/org/sireum/org_sireum_None_856E6F.h
         library/org/sireum/org_sireum_None_856E6F.c
-        library/org/sireum/type-org_sireum_None_892E2E.h
-        library/org/sireum/org_sireum_None_892E2E.h
-        library/org/sireum/org_sireum_None_892E2E.c
         library/org/sireum/type-org_sireum_None_964667.h
         library/org/sireum/org_sireum_None_964667.h
         library/org/sireum/org_sireum_None_964667.c
@@ -321,42 +264,24 @@ add_library(main STATIC
         library/org/sireum/type-org_sireum_None_B473AE.h
         library/org/sireum/org_sireum_None_B473AE.h
         library/org/sireum/org_sireum_None_B473AE.c
-        library/org/sireum/type-org_sireum_None_C2CCA4.h
-        library/org/sireum/org_sireum_None_C2CCA4.h
-        library/org/sireum/org_sireum_None_C2CCA4.c
-        library/org/sireum/type-org_sireum_None_C92EDC.h
-        library/org/sireum/org_sireum_None_C92EDC.h
-        library/org/sireum/org_sireum_None_C92EDC.c
         library/org/sireum/type-org_sireum_None_ED72E1.h
         library/org/sireum/org_sireum_None_ED72E1.h
         library/org/sireum/org_sireum_None_ED72E1.c
-        library/org/sireum/type-org_sireum_None_FD0D39.h
-        library/org/sireum/org_sireum_None_FD0D39.h
-        library/org/sireum/org_sireum_None_FD0D39.c
         library/org/sireum/type-org_sireum_Nothing.h
         library/org/sireum/org_sireum_Nothing.h
         library/org/sireum/org_sireum_Nothing.c
         library/org/sireum/type-org_sireum_Option_10368D.h
         library/org/sireum/org_sireum_Option_10368D.h
         library/org/sireum/org_sireum_Option_10368D.c
-        library/org/sireum/type-org_sireum_Option_188779.h
-        library/org/sireum/org_sireum_Option_188779.h
-        library/org/sireum/org_sireum_Option_188779.c
         library/org/sireum/type-org_sireum_Option_2B0611.h
         library/org/sireum/org_sireum_Option_2B0611.h
         library/org/sireum/org_sireum_Option_2B0611.c
-        library/org/sireum/type-org_sireum_Option_376396.h
-        library/org/sireum/org_sireum_Option_376396.h
-        library/org/sireum/org_sireum_Option_376396.c
         library/org/sireum/type-org_sireum_Option_3B7208.h
         library/org/sireum/org_sireum_Option_3B7208.h
         library/org/sireum/org_sireum_Option_3B7208.c
         library/org/sireum/type-org_sireum_Option_40D664.h
         library/org/sireum/org_sireum_Option_40D664.h
         library/org/sireum/org_sireum_Option_40D664.c
-        library/org/sireum/type-org_sireum_Option_5F39ED.h
-        library/org/sireum/org_sireum_Option_5F39ED.h
-        library/org/sireum/org_sireum_Option_5F39ED.c
         library/org/sireum/type-org_sireum_Option_6239DB.h
         library/org/sireum/org_sireum_Option_6239DB.h
         library/org/sireum/org_sireum_Option_6239DB.c
@@ -375,9 +300,6 @@ add_library(main STATIC
         library/org/sireum/type-org_sireum_Option_882048.h
         library/org/sireum/org_sireum_Option_882048.h
         library/org/sireum/org_sireum_Option_882048.c
-        library/org/sireum/type-org_sireum_Option_89E471.h
-        library/org/sireum/org_sireum_Option_89E471.h
-        library/org/sireum/org_sireum_Option_89E471.c
         library/org/sireum/type-org_sireum_Option_8E9F45.h
         library/org/sireum/org_sireum_Option_8E9F45.h
         library/org/sireum/org_sireum_Option_8E9F45.c
@@ -399,42 +321,24 @@ add_library(main STATIC
         library/org/sireum/type-org_sireum_Option_C622DB.h
         library/org/sireum/org_sireum_Option_C622DB.h
         library/org/sireum/org_sireum_Option_C622DB.c
-        library/org/sireum/type-org_sireum_Option_E65AA5.h
-        library/org/sireum/org_sireum_Option_E65AA5.h
-        library/org/sireum/org_sireum_Option_E65AA5.c
         library/org/sireum/type-org_sireum_Option_EBB396.h
         library/org/sireum/org_sireum_Option_EBB396.h
         library/org/sireum/org_sireum_Option_EBB396.c
-        library/org/sireum/type-org_sireum_S64.h
-        library/org/sireum/org_sireum_S64.h
-        library/org/sireum/org_sireum_S64.c
         library/org/sireum/type-org_sireum_Some.h
         library/org/sireum/org_sireum_Some.h
         library/org/sireum/org_sireum_Some.c
-        library/org/sireum/type-org_sireum_Some_040EE4.h
-        library/org/sireum/org_sireum_Some_040EE4.h
-        library/org/sireum/org_sireum_Some_040EE4.c
         library/org/sireum/type-org_sireum_Some_07AD88.h
         library/org/sireum/org_sireum_Some_07AD88.h
         library/org/sireum/org_sireum_Some_07AD88.c
         library/org/sireum/type-org_sireum_Some_14C467.h
         library/org/sireum/org_sireum_Some_14C467.h
         library/org/sireum/org_sireum_Some_14C467.c
-        library/org/sireum/type-org_sireum_Some_2040D2.h
-        library/org/sireum/org_sireum_Some_2040D2.h
-        library/org/sireum/org_sireum_Some_2040D2.c
         library/org/sireum/type-org_sireum_Some_23FE19.h
         library/org/sireum/org_sireum_Some_23FE19.h
         library/org/sireum/org_sireum_Some_23FE19.c
-        library/org/sireum/type-org_sireum_Some_24B656.h
-        library/org/sireum/org_sireum_Some_24B656.h
-        library/org/sireum/org_sireum_Some_24B656.c
         library/org/sireum/type-org_sireum_Some_3E197E.h
         library/org/sireum/org_sireum_Some_3E197E.h
         library/org/sireum/org_sireum_Some_3E197E.c
-        library/org/sireum/type-org_sireum_Some_3EC8A4.h
-        library/org/sireum/org_sireum_Some_3EC8A4.h
-        library/org/sireum/org_sireum_Some_3EC8A4.c
         library/org/sireum/type-org_sireum_Some_4782C6.h
         library/org/sireum/org_sireum_Some_4782C6.h
         library/org/sireum/org_sireum_Some_4782C6.c
@@ -456,9 +360,6 @@ add_library(main STATIC
         library/org/sireum/type-org_sireum_Some_82706F.h
         library/org/sireum/org_sireum_Some_82706F.h
         library/org/sireum/org_sireum_Some_82706F.c
-        library/org/sireum/type-org_sireum_Some_A13654.h
-        library/org/sireum/org_sireum_Some_A13654.h
-        library/org/sireum/org_sireum_Some_A13654.c
         library/org/sireum/type-org_sireum_Some_A89224.h
         library/org/sireum/org_sireum_Some_A89224.h
         library/org/sireum/org_sireum_Some_A89224.c
@@ -477,33 +378,21 @@ add_library(main STATIC
         library/org/sireum/type-org_sireum_Some_E49AF0.h
         library/org/sireum/org_sireum_Some_E49AF0.h
         library/org/sireum/org_sireum_Some_E49AF0.c
-        library/org/sireum/type-org_sireum_Tuple2_4DFC06.h
-        library/org/sireum/org_sireum_Tuple2_4DFC06.h
-        library/org/sireum/org_sireum_Tuple2_4DFC06.c
-        library/org/sireum/type-org_sireum_Tuple2_66F7BA.h
-        library/org/sireum/org_sireum_Tuple2_66F7BA.h
-        library/org/sireum/org_sireum_Tuple2_66F7BA.c
-        library/org/sireum/type-org_sireum_Tuple2_A29DBA.h
-        library/org/sireum/org_sireum_Tuple2_A29DBA.h
-        library/org/sireum/org_sireum_Tuple2_A29DBA.c
         library/org/sireum/type-org_sireum_Tuple2_EC3B57.h
         library/org/sireum/org_sireum_Tuple2_EC3B57.h
         library/org/sireum/org_sireum_Tuple2_EC3B57.c
-        library/org/sireum/conversions/type-org_sireum_conversions_Z.h
-        library/org/sireum/conversions/org_sireum_conversions_Z.h
-        library/org/sireum/conversions/org_sireum_conversions_Z.c
         library/org/sireum/ops/type-org_sireum_ops_ISZOps.h
         library/org/sireum/ops/org_sireum_ops_ISZOps.h
         library/org/sireum/ops/org_sireum_ops_ISZOps.c
-        library/org/sireum/ops/type-org_sireum_ops_ops_ISZOps_524353.h
-        library/org/sireum/ops/org_sireum_ops_ops_ISZOps_524353.h
-        library/org/sireum/ops/org_sireum_ops_ops_ISZOps_524353.c
         library/org/sireum/ops/type-org_sireum_ops_ops_ISZOps_A6D40E.h
         library/org/sireum/ops/org_sireum_ops_ops_ISZOps_A6D40E.h
         library/org/sireum/ops/org_sireum_ops_ops_ISZOps_A6D40E.c
         library/t/type-t_Arch.h
         library/t/t_Arch.h
         library/t/t_Arch.c
+        library/t/type-t_ArtNix.h
+        library/t/t_ArtNix.h
+        library/t/t_ArtNix.c
         library/t/type-t_Base_Types.h
         library/t/t_Base_Types.h
         library/t/t_Base_Types.c
@@ -513,32 +402,34 @@ add_library(main STATIC
         library/t/Base_Types/type-t_Base_Types_Float_32_Payload.h
         library/t/Base_Types/t_Base_Types_Float_32_Payload.h
         library/t/Base_Types/t_Base_Types_Float_32_Payload.c
-        library/t/type-t_Cli.h
-        library/t/t_Cli.h
-        library/t/t_Cli.c
-        library/t/Cli/type-t_Cli_HelpOption.h
-        library/t/Cli/t_Cli_HelpOption.h
-        library/t/Cli/t_Cli_HelpOption.c
-        library/t/Cli/RunChoice/type-t_Cli_RunChoice_Type.h
-        library/t/Cli/RunChoice/t_Cli_RunChoice_Type.h
-        library/t/Cli/RunChoice/t_Cli_RunChoice_Type.c
-        library/t/Cli/type-t_Cli_RunOption.h
-        library/t/Cli/t_Cli_RunOption.h
-        library/t/Cli/t_Cli_RunOption.c
-        library/t/Cli/type-t_Cli_RunTopOption.h
-        library/t/Cli/t_Cli_RunTopOption.h
-        library/t/Cli/t_Cli_RunTopOption.c
-        library/t/type-t_Demo.h
-        library/t/t_Demo.h
-        library/t/t_Demo.c
+        library/t/type-t_Fan_i_fp_fan_App.h
+        library/t/t_Fan_i_fp_fan_App.h
+        library/t/t_Fan_i_fp_fan_App.c
+        library/t/type-t_IPCPorts.h
+        library/t/t_IPCPorts.h
+        library/t/t_IPCPorts.c
+        library/t/type-t_LegacyDemo.h
+        library/t/t_LegacyDemo.h
+        library/t/t_LegacyDemo.c
+        library/t/type-t_PlatformNix.h
+        library/t/t_PlatformNix.h
+        library/t/t_PlatformNix.c
+        library/t/type-t_Process.h
+        library/t/t_Process.h
         library/t/type-t_ProcessorTimingProperties.h
         library/t/t_ProcessorTimingProperties.h
         library/t/t_ProcessorTimingProperties.c
-        library/t/type-t_ScheduleProviderI.h
-        library/t/t_ScheduleProviderI.h
         library/t/type-t_Schedulers.h
         library/t/t_Schedulers.h
         library/t/t_Schedulers.c
+        library/t/type-t_SharedMemory.h
+        library/t/t_SharedMemory.h
+        library/t/type-t_TempControl_i_tcp_tempControl_App.h
+        library/t/t_TempControl_i_tcp_tempControl_App.h
+        library/t/t_TempControl_i_tcp_tempControl_App.c
+        library/t/type-t_TempSensor_i_tsp_tempSensor_App.h
+        library/t/t_TempSensor_i_tsp_tempSensor_App.h
+        library/t/t_TempSensor_i_tsp_tempSensor_App.c
         library/t/TemperatureControl/FanAck/type-t_TemperatureControl_FanAck_Type.h
         library/t/TemperatureControl/FanAck/t_TemperatureControl_FanAck_Type.h
         library/t/TemperatureControl/FanAck/t_TemperatureControl_FanAck_Type.c
@@ -629,10 +520,6 @@ add_library(main STATIC
         library/t/type-t_TranspilerUtil.h
         library/t/t_TranspilerUtil.h
         library/t/t_TranspilerUtil.c
-        ext/ext-schedule/round_robin.c
-        ext/ext-schedule/legacy.c
-        ext/ext-schedule/process.c
-        ext/ext-schedule/static_scheduler.c
         ext/ext-c/ext.c
         ext/ext-c/TempSensor_i_tsp_tempSensor/TempSensor_i_tsp_tempSensor_api.c
         ext/ext-c/TempSensor_i_tsp_tempSensor/TempSensor_i_tsp_tempSensor_api.h
@@ -650,25 +537,21 @@ add_library(main STATIC
         ext/etc/ipc.c)
 
 target_include_directories(main
-        PUBLIC PUBLIC app-Demo
+        PUBLIC PUBLIC app-TempSensor_i_tsp_tempSensor_App
+        PUBLIC PUBLIC app-TempControl_i_tcp_tempControl_App
+        PUBLIC PUBLIC app-Fan_i_fp_fan_App
+        PUBLIC PUBLIC app-LegacyDemo
         PUBLIC PUBLIC runtime
         PUBLIC PUBLIC library/art
         PUBLIC PUBLIC library/art/Bridge
         PUBLIC PUBLIC library/art/DispatchPropertyProtocol
         PUBLIC PUBLIC library/art/PortMode
         PUBLIC PUBLIC library/art/scheduling
-        PUBLIC PUBLIC library/art/scheduling/legacy
-        PUBLIC PUBLIC library/art/scheduling/roundrobin
-        PUBLIC PUBLIC library/art/scheduling/static
-        PUBLIC PUBLIC library/art/scheduling/static/Explorer
-        PUBLIC PUBLIC library/art/scheduling/static/Schedule
+        PUBLIC PUBLIC library/art/scheduling/nop
         PUBLIC PUBLIC library/org/sireum
-        PUBLIC PUBLIC library/org/sireum/conversions
         PUBLIC PUBLIC library/org/sireum/ops
         PUBLIC PUBLIC library/t
         PUBLIC PUBLIC library/t/Base_Types
-        PUBLIC PUBLIC library/t/Cli
-        PUBLIC PUBLIC library/t/Cli/RunChoice
         PUBLIC PUBLIC library/t/TemperatureControl/FanAck
         PUBLIC PUBLIC library/t/TemperatureControl
         PUBLIC PUBLIC library/t/TemperatureControl/FanCmd
@@ -676,7 +559,6 @@ target_include_directories(main
         PUBLIC PUBLIC library/t/TemperatureControl/TempControl_i_tcp_tempControl_Bridge
         PUBLIC PUBLIC library/t/TemperatureControl/TempSensor_i_tsp_tempSensor_Bridge
         PUBLIC PUBLIC library/t/TemperatureControl/TempUnit
-        PUBLIC PUBLIC ext/ext-schedule
         PUBLIC PUBLIC ext/ext-c
         PUBLIC PUBLIC ext/ext-c/TempSensor_i_tsp_tempSensor
         PUBLIC PUBLIC ext/ext-c/TempControl_i_tcp_tempControl
@@ -684,9 +566,30 @@ target_include_directories(main
         PUBLIC PUBLIC ext/etc)
 
 
-add_executable(Demo-bin app-Demo/Demo.c)
+add_executable(TempSensor_i_tsp_tempSensor_App-bin app-TempSensor_i_tsp_tempSensor_App/TempSensor_i_tsp_tempSensor_App.c)
 
-target_link_libraries(Demo-bin LINK_PUBLIC main m)
+target_link_libraries(TempSensor_i_tsp_tempSensor_App-bin LINK_PUBLIC main m)
 
-set_target_properties(Demo-bin PROPERTIES OUTPUT_NAME Demo)
+set_target_properties(TempSensor_i_tsp_tempSensor_App-bin PROPERTIES OUTPUT_NAME TempSensor_i_tsp_tempSensor_App)
+
+
+add_executable(TempControl_i_tcp_tempControl_App-bin app-TempControl_i_tcp_tempControl_App/TempControl_i_tcp_tempControl_App.c)
+
+target_link_libraries(TempControl_i_tcp_tempControl_App-bin LINK_PUBLIC main m)
+
+set_target_properties(TempControl_i_tcp_tempControl_App-bin PROPERTIES OUTPUT_NAME TempControl_i_tcp_tempControl_App)
+
+
+add_executable(Fan_i_fp_fan_App-bin app-Fan_i_fp_fan_App/Fan_i_fp_fan_App.c)
+
+target_link_libraries(Fan_i_fp_fan_App-bin LINK_PUBLIC main m)
+
+set_target_properties(Fan_i_fp_fan_App-bin PROPERTIES OUTPUT_NAME Fan_i_fp_fan_App)
+
+
+add_executable(LegacyDemo-bin app-LegacyDemo/LegacyDemo.c)
+
+target_link_libraries(LegacyDemo-bin LINK_PUBLIC main m)
+
+set_target_properties(LegacyDemo-bin PROPERTIES OUTPUT_NAME LegacyDemo)
 

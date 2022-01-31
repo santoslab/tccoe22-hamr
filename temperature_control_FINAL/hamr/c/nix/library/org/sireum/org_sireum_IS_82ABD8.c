@@ -113,3 +113,5 @@ void IS_82ABD8_string_(STACK_FRAME String result, IS_82ABD8 this) {
 }
 
 B IS_82ABD8__ne(IS_82ABD8 this, IS_82ABD8 other);
+
+void IS_82ABD8_toMS(STACK_FRAME MS_30A5B4 result, IS_82ABD8 this);

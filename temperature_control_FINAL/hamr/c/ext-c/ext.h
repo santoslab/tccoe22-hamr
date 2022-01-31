@@ -5,15 +5,10 @@
 
 #include <all.h>
 
-static F32 MIN_TEMP = 55.0;
-static F32 MAX_TEMP = 100.0;
+void createTempInFahrenheit(STACK_FRAME F32 value, t_TemperatureControl_Temperature_i result);
 
-struct t_TemperatureControl_Temperature_i convertTemperatureToFahrenheit(
-    t_TemperatureControl_Temperature_i t);
+void convertTempToFahrenheit(STACK_FRAME t_TemperatureControl_Temperature_i result);
 
-struct t_TemperatureControl_SetPoint_i convertSetPointToFahrenheit(
-    t_TemperatureControl_SetPoint_i t);
-
-struct t_TemperatureControl_Temperature_i createTempInFahrenheit(F32 value);
-
+static const F32 MIN_TEMP = 50.0;
+static const F32 MAX_TEMP = 100.0;
 #endif

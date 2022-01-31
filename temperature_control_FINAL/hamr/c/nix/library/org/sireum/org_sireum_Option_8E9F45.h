@@ -18,6 +18,10 @@ inline void Option_8E9F45_string_(STACK_FRAME String result, Option_8E9F45 this)
   Type_string_(CALLER result, this);
 }
 
+B Option_8E9F45_isEmpty_(STACK_FRAME Option_8E9F45 this);
+
+B Option_8E9F45_nonEmpty_(STACK_FRAME Option_8E9F45 this);
+
 #ifdef __cplusplus
 }
 #endif

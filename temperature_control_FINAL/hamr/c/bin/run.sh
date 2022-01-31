@@ -91,7 +91,7 @@ case "${SCHEDULER}" in
       exit 1
     fi
 
-    launch "TempSensor_i_tsp_tempSensor_App${EXT} TempControl_i_tcp_tempControl_App${EXT} Fan_i_fp_fan_App${EXT}";
+    launch "TempSensor_i_tsp_tempSensor_App${EXT} TempControl_i_tcp_tempControl_App${EXT}";
 
     read -p "Press enter to initialise components ..."
     slang-build/LegacyDemo${EXT}

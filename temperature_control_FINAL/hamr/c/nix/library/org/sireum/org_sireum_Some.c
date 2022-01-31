@@ -1,5 +1,15 @@
 #include <all.h>
 
+Z Some_488F47_get_(STACK_FRAME Some_488F47 this) {
+  DeclNewStackFrame(caller, "Option.scala", "org.sireum.Some", "get", 0);
+  return Some_488F47_value_(this);
+}
+
+B Some_D29615_isEmpty_(STACK_FRAME Some_D29615 this) {
+  DeclNewStackFrame(caller, "Option.scala", "org.sireum.Some", "isEmpty", 0);
+  return F;
+}
+
 t_TemperatureControl_TempUnit_Type Some_486E43_get_(STACK_FRAME Some_486E43 this) {
   DeclNewStackFrame(caller, "Option.scala", "org.sireum.Some", "get", 0);
   return Some_486E43_value_(this);
@@ -62,13 +72,7 @@ void Some_482E57_get_(STACK_FRAME art_Bridge result, Some_482E57 this) {
   return;
 }
 
-void Some_24B656_get_(STACK_FRAME art_ArtSlangMessage result, Some_24B656 this) {
-  DeclNewStackFrame(caller, "Option.scala", "org.sireum.Some", "get", 0);
-  Type_assign(result, Some_24B656_value_(this), sizeof(struct art_ArtSlangMessage));
-  return;
-}
-
-B Some_24B656_nonEmpty_(STACK_FRAME Some_24B656 this) {
+B Some_D29615_nonEmpty_(STACK_FRAME Some_D29615 this) {
   DeclNewStackFrame(caller, "Option.scala", "org.sireum.Some", "nonEmpty", 0);
   return T;
 }

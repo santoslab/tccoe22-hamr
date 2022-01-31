@@ -10,7 +10,7 @@ extern "C" {
 // MS[Z, Option[art.UPort]]
 #include <type-org_sireum_Option_6239DB.h>
 
-#define MaxMS_F55A18 13
+#define MaxMS_F55A18 16
 #define MS_F55A18SizeT int8_t
 
 typedef struct MS_F55A18 *MS_F55A18;

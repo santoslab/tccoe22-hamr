@@ -7,6 +7,10 @@ extern "C" {
 
 #include <types.h>
 
+Z Some_488F47_get_(STACK_FRAME Some_488F47 this);
+
+B Some_D29615_isEmpty_(STACK_FRAME Some_D29615 this);
+
 t_TemperatureControl_TempUnit_Type Some_486E43_get_(STACK_FRAME Some_486E43 this);
 
 t_TemperatureControl_FanAck_Type Some_07AD88_get_(STACK_FRAME Some_07AD88 this);
@@ -29,9 +33,7 @@ B Some_482E57_nonEmpty_(STACK_FRAME Some_482E57 this);
 
 void Some_482E57_get_(STACK_FRAME art_Bridge result, Some_482E57 this);
 
-void Some_24B656_get_(STACK_FRAME art_ArtSlangMessage result, Some_24B656 this);
-
-B Some_24B656_nonEmpty_(STACK_FRAME Some_24B656 this);
+B Some_D29615_nonEmpty_(STACK_FRAME Some_D29615 this);
 
 #ifdef __cplusplus
 }
