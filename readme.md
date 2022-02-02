@@ -4,10 +4,19 @@
 
 ### Prerequisites
 
-An OVA (Open Virtual Appliance) has been created that has all the development tools that will be used in this tutorial preinstalled. You will need a virtualization provider that is capable of importing the OVA such as VMWare or VirtualBox.  We recommend using VirtualBox as it is free/open-source and can be downloaded via 
+An OVA (Open Virtual Appliance) has been created that has all the development tools<sup>*</sup> that will be used in this tutorial preinstalled. You will need a virtualization provider that is capable of importing the OVA such as VMWare or VirtualBox.  We recommend using VirtualBox as it is free/open-source and can be downloaded via 
 
 [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
 
+&ast; CLion, a C/C++ IDE, is used during the demo and does requires a license. If you don't have one then a 30 day free-trial license can be obtained via the following:
+
+1.  Launch CLion from within the virtual machine
+2.  A ``Licenses`` dialog box will be displayed.  Click the ``Start trial`` radio button and then click ``Log In to JetBrains Account``.
+3.  Login to your existing JetBrains account or, if you don't have an account then do the following:
+    1. Create a new account
+    2. An email will be sent that has the link ``Confirm your account``
+    3. Click through and complete the online account setup.
+4. Once the account is setup, return to CLion and click ``Start Trial`` and then ``Close``
 
 ### Import the OVA
 
