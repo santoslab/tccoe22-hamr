@@ -3,7 +3,7 @@
 ## Diagrams
 
 ### AADL Arch
-![AADL Arch](aadl/diagrams/aadl-arch.svg)
+![AADL Arch](aadl/diagrams/aadl-arch.png)
 
 ## Build/Run Instructions
 
